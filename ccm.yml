@@ -1,0 +1,23 @@
+---
+- hosts: all
+  gather_facts: yes
+  vars:
+    required_packages:
+      - python3-pip
+
+  tasks:
+
+  - name: Upgrade all packages
+    apt:
+      name: "*"
+      state: latest
+
+  - name: Install required packages
+    apt:
+      name: "{{ required_packages }}"
+
+  - name: Install cmm tool
+    pip:
+      name: ccm
+      state: latest
+    
