@@ -3,7 +3,9 @@
   gather_facts: yes
   vars:
     required_packages:
-      - python3-pip
+      - "python3-pip"
+      - "default-jre"
+      - "net-tools"
 
   tasks:
 
@@ -11,6 +13,7 @@
     apt:
       name: "*"
       state: latest
+      update_cache: yes
 
   - name: Install required packages
     apt:
